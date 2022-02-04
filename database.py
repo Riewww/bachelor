@@ -1,6 +1,6 @@
 import mysql.connector
+
 from mysql.connector import Error
-from typing import List
 
 
 def create_connection():
@@ -31,12 +31,18 @@ def execute_query(connection, query):
 
 
 connection = create_connection()
-query = "SELECT gene_id, seq_region_id, description FROM gene WHERE description LIKE '%interleukin%'"
+query = "SELECT dna.seq_region_id, dna.sequence, gene.seq_region_start, gene.seq_region_end FROM dna INNER JOIN " \
+        "(SELECT gene_id, description, gene.seq_region_id, seq_region_start, seq_region_end FROM gene WHERE description LIKE \"%interleukin%\") gene " \
+        "WHERE gene.seq_region_id = dna.seq_region_id"
+
 
 res = []
 
 for x in execute_query(connection,query):
     res.append(x)
+
+
+
 
 def create_connection2():
     connection = None
@@ -50,10 +56,43 @@ def create_connection2():
     return connection
 
 
+
+
+
+id = []
+seq = []
+seqcut = []
+start = []
+end = []
+
+
+
+def split_results(result):
+    for x in result:
+        a, b, c, d = x
+        id.append(str(a))
+        seq.append(b)
+        start.append(c)
+        end.append(d)
+
+def cut_sequence(seq,start,end):
+    i = 1
+    for x in seq:
+        seqcut.append(str(x)[int(str(start[i])):int(str(end[i]))])
+        i+1
+    return seqcut
+
+split_results(res)
+cut_sequence(seq,start,end)
+
+
+
 con = create_connection2()
 cur = con.cursor()
-for x in res:
-    querys= "INSERT INTO more (eins,zwei,drei) VALUES " + str(x) + "; "
+for x in id:
+    i=1
+    querys= "INSERT INTO takifugu (id,seq) VALUES (" + str(x) + ",\" " + str(seqcut[i]) + "\"); "
+    i+1
     cur.execute(querys)
     con.commit()
     cur.fetchall()
