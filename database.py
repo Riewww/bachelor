@@ -1,9 +1,9 @@
 import mysql.connector
-import data_extraction
 from mysql.connector import Error
 
 res = []
 
+#creates a connection to ensembl database
 def create_connection_ensembl():
     connection = None
     try:
@@ -14,10 +14,10 @@ def create_connection_ensembl():
         print("Error while connecting :", e)
     return connection
 
-
+#executing query
 def execute_query(connection, query):
     cursor = connection.cursor()
-    result=()
+    result = ()
     try:
         cursor.execute(query)
         result = cursor.fetchall()
@@ -26,10 +26,12 @@ def execute_query(connection, query):
         print("Error while executing query: ", e)
     return result
 
+#saves results from executed query in res
 def save_queryresult(results):
     for x in results:
         res.append(x)
 
+#creates connection to own database
 def create_connection_own():
     connection = None
     try:
