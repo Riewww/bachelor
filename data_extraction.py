@@ -3,6 +3,7 @@ seq = []
 seqcut = []
 start = []
 end = []
+description = []
 
 #uses method split and cut results
 def get(results):
@@ -13,11 +14,12 @@ def get(results):
 #splits results tuple and saves it into id, seq, start and end
 def split_results(result):
     for x in result:
-        a, b, c, d = x
+        a, b, c, d, e = x
         id.append(str(a))
         seq.append(b)
         start.append(c)
         end.append(d)
+        description.append(e)
 
 
 #uses information from start and end to cut seq and saves the cut sequence into seqcut
