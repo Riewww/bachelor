@@ -9,7 +9,7 @@ def create_connection_ensembl():
     try:
         connection = mysql.connector.connect(host='ensembldb.ensembl.org', user='anonymous', port='5306')
         print("Connection successfull")
-        execute_query(connection, "USE danio_rerio_core_48_7b")
+        execute_query(connection, "USE takifugu_rubripes_core_105_12")
     except Error as e:
         print("Error while connecting :", e)
     return connection
@@ -29,7 +29,7 @@ def execute_query(connection, query):
 #saves results from executed query in res
 def save_queryresult(results):
     for x in results:
-        res.append(x)
+        res.append(''.join(filter(str.isalnum, str(x))))
 
 #creates connection to own database
 def create_connection_own():

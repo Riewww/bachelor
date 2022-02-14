@@ -26,6 +26,6 @@ def split_results(result):
 def cut_sequence(seq, start, end):
     i = 0
     for x in seq:
-        seqcut.append(str(x)[int(str(start[i])):int(str(end[i]))])
+        seqcut.append(str(x)[(int(str(start[i]))-1):(int(str(end[i]))+1)])
         i = i + 1
     return seqcut
