@@ -18,13 +18,19 @@ def getIdfromDescr(description):
 
 def findID(path):
     for record in SeqIO.parse(path, "fasta"):
-        if getIdfromDescr(record.description) in geneIDs:
-            seqDic.update({getIdfromDescr(record.description) : str(record.seq)})
+        x = getIdfromDescr(record.description)
+        if x in geneIDs:
+            if x in seqDic:
+                if len(seqDic.get(x)) > len(record.seq):
+                    continue
+                else:
+                    seqDic.update({x: str(record.seq)})
+            else:
+                seqDic.update({x: str(record.seq)})
         else:
             continue
 
-loadgeneIDs("/Users/rieke/OneDrive - stud.hs-emden-leer.de/takifugu.txt")
-findID("/Users/rieke/OneDrive - stud.hs-emden-leer.de/ivana/data")
+
 
 for x in seqDic:
     print(x + "\n" + seqDic.get(x))

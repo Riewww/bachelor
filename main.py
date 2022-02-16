@@ -1,6 +1,8 @@
 #import data_extraction
 import database
 
+
+
 #query getting region id, sequence, start and end of sequence from genes where the word interleukin is in the description
 # old query_ensembl =  "SELECT gene.stable_id, dna.sequence, gene.seq_region_start, gene.seq_region_end, gene.description FROM dna INNER JOIN " \
        # "(SELECT gene_id, description, gene.seq_region_id, seq_region_start, seq_region_end, gene.stable_id FROM gene WHERE description LIKE \"%interleukin%\") gene " \

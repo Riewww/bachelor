@@ -1,6 +1,6 @@
 import database
 
-path = "/Users/rieke/Desktop/takifugu.txt"
+path = "/Users/rieke/OneDrive - stud.hs-emden-leer.de/bachelorarbeit/liststableid/gasterosteus_aculeatus.txt"
 geneID = []
 
 
@@ -14,7 +14,7 @@ def write_file(path, header):
 
 
 connection = database.create_connection_own()
-database.save_queryresult(database.execute_query(connection, "SELECT id FROM takifugu_rubripes"))
+database.save_queryresult(database.execute_query(connection, "SELECT id FROM gasterosteus_aculeatus"))
 
 for x in database.res:
     a = x
