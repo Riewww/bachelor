@@ -1,8 +1,8 @@
 import database
 
 path = "/Users/rieke/Desktop/takifugu.txt"
-header = []
-sequence = []
+geneID = []
+
 
 
 def write_file(path, header):
@@ -18,7 +18,7 @@ database.save_queryresult(database.execute_query(connection, "SELECT id FROM tak
 
 for x in database.res:
     a = x
-    header.append(''.join(filter(str.isalnum, str(a))))
+    geneID.append(''.join(filter(str.isalnum, str(a))))
 
 
-write_file(path, header)
+write_file(path, geneID)
