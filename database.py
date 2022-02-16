@@ -9,7 +9,7 @@ def create_connection_ensembl():
     try:
         connection = mysql.connector.connect(host='ensembldb.ensembl.org', user='anonymous', port='5306')
         print("Connection successfull")
-        execute_query(connection, "USE gasterosteus_aculeatus_core_105_1")
+        execute_query(connection, "USE oryzias_latipes_core_105_1")
     except Error as e:
         print("Error while connecting :", e)
     return connection
