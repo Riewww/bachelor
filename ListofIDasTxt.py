@@ -10,9 +10,9 @@ connection = database.create_connection_own()
 
 #method to create a new file to write geneIds into
 def write_file():
-    for name in peptidfasta.tablenames:
-        path = "/Users/rieke/OneDrive - stud.hs-emden-leer.de/bachelorarbeit/liststableid/" + name +".txt"
-        getid(name)
+    #for name in peptidfasta.tablenames:
+        path = "/Users/rieke/OneDrive - stud.hs-emden-leer.de/bachelorarbeit/liststableid/" + "danio_rerio_real" +".txt"
+        getid("danio_rerio")
         f = open(path, 'w')
         i = 0
         for x in geneID:

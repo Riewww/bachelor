@@ -1,5 +1,6 @@
 import database
 import os
+import peptidfasta
 
 #loads all file names of directory into one list
 listreal = os.listdir("/Users/rieke/Desktop/real/")
@@ -13,7 +14,7 @@ connection = database.create_connection_own()
 
 # checks if OrthoGroup name is in directory with "real ones"
 # if not in there, saves all stable ids in drop
-# drops all entrys with stable id in drop from all species
+# drops all entrys with stable id in drop from all existing tables
 def removefiles():
     for names in listall:
         if (names.replace('.fa','.txt')) in listreal:
@@ -23,9 +24,10 @@ def removefiles():
             for lines in file:
                 if lines.startswith('>'):
                     drop.append((lines).replace(">","").strip())
-    for ids in drop:
-        continue
-#database.execute_query(connection, "DELETE FROM all_species WHERE id = '" + id + "';")
-# #connection.commit()
+    for table in peptidfasta.gettablenames():
+        for ids in drop:
+            database.execute_query(connection, "DELETE FROM " +table+" WHERE id = '" + str(ids) + "';")
+            connection.commit()
+
 
 removefiles()
