@@ -14,9 +14,17 @@ for name in listreal:
 
 query = ""
 
-#Updates database with peptide sequence to corresponding id
 for x in FastaScanner.seqDic:
+    query_own = "INSERT IGNORE INTO all_species (id, seq) VALUES (\"" + str(x) + "\", \" " + str(FastaScanner.seqDic.get(x))+ "\");"
     cursor = connection_own.cursor()
-    query = "UPDATE all_species SET seq = '" + FastaScanner.seqDic.get(x) + "' WHERE id = '"+ str(x) +"' ;"
-    database.execute_query(connection_own, query)
+    cursor.execute(query_own)
     connection_own.commit()
+    cursor.fetchall()
+
+
+#Updates database with peptide sequence to corresponding id
+#for x in FastaScanner.seqDic:
+  #  cursor = connection_own.cursor()
+   # query = "UPDATE all_species SET seq = '" + FastaScanner.seqDic.get(x) + "' WHERE id = '"+ str(x) +"' ;"
+  #  database.execute_query(connection_own, query)
+  #  connection_own.commit()
