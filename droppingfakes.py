@@ -6,6 +6,8 @@ import peptidfasta
 listreal = os.listdir("/Users/rieke/Desktop/real/")
 listall = os.listdir("/Users/rieke/Desktop/ortho/OrthoFinder/Results_Feb16/Orthogroup_Sequences/")
 
+listreal.remove(".DS_Store")
+
 #ids that are not interleukins and need to be dropped
 drop = []
 
@@ -20,7 +22,7 @@ def removefiles():
         if (names.replace('.fa','.txt')) in listreal:
             continue
         else:
-            file = open("/Users/rieke/Desktop/ortho/OrthoFinder/Results_Feb16/Orthogroup_Sequences/" + names.replace('.txt',".fa"), 'r' )
+            file = open("/Users/rieke/Desktop/ortho/OrthoFinder/Results_Feb25_6/Orthogroup_Sequences/" + names.replace('.txt',".fa"), 'r' )
             for lines in file:
                 if lines.startswith('>'):
                     drop.append((lines).replace(">","").strip())
@@ -30,4 +32,15 @@ def removefiles():
             connection.commit()
 
 
-removefiles()
+def comparefiles():
+    for names in listreal:
+        file =  open("/Users/rieke/Desktop/ortho/OrthoFinder/Results_Feb16/Orthogroup_Sequences/" + names.replace('.txt',".fa"), 'r' )
+        for lines in file:
+            if lines.startswith('>'):
+                drop.append((lines).replace(">", "").strip())
+        file2 = open("/Users/rieke/Desktop/real.txt", 'w')
+        for ids in drop:
+            file2.write(ids + "\n")
+
+comparefiles()
+
