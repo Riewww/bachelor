@@ -3,7 +3,7 @@ import database
 # dictionary to store peptide sequences and id temporary
 peptides = {}
 # list of names from all existing tables
-tablenames = []
+tablenames = ["all_species"]
 
 connection = database.create_connection_own()
 
@@ -22,7 +22,7 @@ def gettablenames():
 # method to all peptides and id (header) into fasta file
 def writefile(tablenames):
     for name in tablenames:
-        path ="/Users/rieke/OneDrive - stud.hs-emden-leer.de/bachelorarbeit/new_single_species/" + name + "_new_orthos.fasta"
+        path ="/Users/rieke/OneDrive - stud.hs-emden-leer.de/bachelorarbeit/" + name + "_for_blast.fasta"
         getseqs(name)
         file = open(path, 'w')
         for x in peptides:
@@ -46,4 +46,4 @@ def getseqs(name):
         i = i+1
 
 #writefile(gettablenames())
-#writefile(tablenames)
+writefile(tablenames)
