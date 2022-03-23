@@ -3,8 +3,8 @@ info = ""
 hits ={}
 key = ""
 
-file = open("/Users/rieke/OneDrive - stud.hs-emden-leer.de/bachelorarbeit/BLAST/reverse(Uniprot)/sequenceserver-std_tsv_report_Nerophis.tsv", 'r')
-file_new = open(("/Users/rieke/Desktop/Nerophis_Uniprot.txt"), 'w')
+file = open("/Users/rieke/OneDrive - stud.hs-emden-leer.de/bachelorarbeit/BLAST/reverse(Uniprot)/sequenceserver-std_tsv_report_typhle_3.tsv", 'r')
+file_new = open(("/Users/rieke/Desktop/typhle_Uniprot_3.txt"), 'w')
 for line in file:
     if (line.startswith('#')):
         if (len(matches) != 0):

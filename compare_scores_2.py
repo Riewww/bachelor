@@ -3,15 +3,15 @@ import gc
 import pandas as pd
 import os
 zahl = 0
-interleukin = pd.read_csv("/Users/rieke/Desktop/testen_clean.csv")
-uniprot = pd.read_csv("/Users/rieke/Desktop/Nerophis_uni2.csv")
+interleukin = pd.read_csv("/Users/rieke/Desktop/typhle/typhle_interleukin_clean.csv")
+uniprot = pd.read_csv("/Users/rieke/Desktop/typhle_Uniprot_3_clean.csv")
 liste = []
 liste_genes = []
 id_list = os.listdir("/Users/rieke/Desktop/OG_ids/")
 
 for name in id_list:
     file_id = open("/Users/rieke/Desktop/OG_ids/" + name, 'r')
-    file = open("/Users/rieke/Desktop/Nerophis_ids.txt", 'r')
+    file = open("/Users/rieke/Desktop/typhle/typhle_id.txt", 'r')
     for line in file:
         liste.append(line.strip())
     for lines in file_id:
@@ -29,21 +29,21 @@ for name in id_list:
                     if(row[2]==genes):
                         for index2, row2 in uniprot.iterrows():
                             if(row2[1] == id):
-                                if ( row[2]  in a ):
-                                    temp_int =  a.get(row[2])[0]
-                                    temp_uni = a.get(row[2])[0]
-                                    if (abs(row['bitscore']) > a.get(row[2])[0]):
+                                if ( row[1]  in a ):
+                                    temp_int =  a.get(row[1])[0]
+                                    temp_uni = a.get(row[1])[1]
+                                    if (abs(row['bitscore']) > a.get(row[1])[0]):
                                         temp_int = row['bitscore']
-                                    if (abs(row2['bitscore']) > a.get(row[2])[1]):
+                                    if (abs(row2['bitscore']) > a.get(row[1])[1]):
                                         temp_uni = row2['bitscore']
                                     else:
                                         continue
-                                    a[row[2]].clear()
-                                    a[row[2]].extend([temp_int,temp_uni])
+                                    a[row[1]].clear()
+                                    a[row[1]].extend([temp_int,temp_uni])
 
                                 else:
-                                    a[row[2]] = list()
-                                    a[row[2]].extend([row['bitscore'],row2['bitscore']])
+                                    a[row[1]] = list()
+                                    a[row[1]].extend([row['bitscore'],row2['bitscore']])
                             else:
                                 continue
                         else:
@@ -57,7 +57,7 @@ for name in id_list:
             del temp
             gc.collect()
 
-    d3.to_csv("/Users/rieke/Desktop/bits/" + name.replace(".txt","") + ".csv")
+    d3.to_csv("/Users/rieke/Desktop/bits2/" + name.replace(".txt","") + ".csv")
     del d3
     gc.collect()
     a.clear()

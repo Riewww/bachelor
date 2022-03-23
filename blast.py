@@ -1,7 +1,7 @@
 contigs = []
 
 #file = open("/Users/rieke/OneDrive - stud.hs-emden-leer.de/bachelorarbeit/BLAST/forward(dataset)/sequenceserver-std_tsv_report_Nerophis_after_augustus.tsv", 'r')
-file = open("/Users/rieke/Desktop/testen.txt", 'r')
+file = open("/Users/rieke/Desktop/typhle_interleukin.txt", 'r')
 
 #for line in file:
     #for x in line.split():
@@ -13,7 +13,7 @@ for line in file:
 unique_contigs = list(dict.fromkeys(contigs))
 
 
-file = open("/Users/rieke/Desktop/Nerophis_ids.txt", 'w')
+file = open("/Users/rieke/Desktop/typhle_id.txt", 'w')
 
 for x in unique_contigs:
     file.write(x + "\n")
