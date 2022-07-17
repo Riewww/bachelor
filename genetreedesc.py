@@ -5,7 +5,7 @@ import os
 listID = []
 result = []
 #loads all file names of directory into one list
-pathlist = os.listdir("/Users/rieke/Desktop/ortho/OrthoFinder/Results_Feb16/Orthogroup_Sequences/")
+pathlist = os.listdir("/Users/rieke/Desktop/ortho/OrthoFinder/Results_Feb25_6/Orthogroup_Sequences/")
 
 connection = database.create_connection_own()
 
@@ -13,7 +13,7 @@ connection = database.create_connection_own()
 # method to get a new txt file with description of stable id for each OrthoGroup file
 def getdescriptionofOG():
     for OGname in pathlist:
-        file = open("/Users/rieke/Desktop/ortho/OrthoFinder/Results_Feb16/Orthogroup_Sequences/" + OGname, 'r')
+        file = open("/Users/rieke/Desktop/ortho/OrthoFinder/Results_Feb25_6/Orthogroup_Sequences/" + OGname, 'r')
         for line in file:
             if line.startswith('>'):
                 listID.append((line.replace(">", "")).strip())
@@ -24,7 +24,7 @@ def getdescriptionofOG():
             query = "SELECT descr FROM description WHERE id ='" + id + "';"
             result.append(str(database.execute_query(connection,query)))
 
-        filenew = open("/Users/rieke/OneDrive - stud.hs-emden-leer.de/bachelorarbeit/liststableid/OG" + (OGname.replace(".fa", "")) + ".txt", 'w')
+        filenew = open("/Users/rieke/OneDrive - stud.hs-emden-leer.de/bachelorarbeit/OG/" + (OGname.replace(".fa", "")) + ".txt", 'w')
         for desc in result:
             filenew.write(desc.replace("(","").replace(")","")+ "\n")
         listID.clear()

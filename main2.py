@@ -7,10 +7,11 @@ connection_own = database.create_connection_own()
 #use script FastaScanner to load stable IDs of one species and find the corresponding peptide sequences in file
 FastaScanner.loadgeneIDs("/Users/rieke/OneDrive - stud.hs-emden-leer.de/bachelorarbeit/liststableid/all_orthos.txt")
 
-listreal = os.listdir("/Users/rieke/Desktop/real/")
+listreal = os.listdir("/Users/rieke/Documents/bio/peptide_files/")
 
 for name in listreal:
-    FastaScanner.findID("/Users/rieke/Downloads/" + name.replace('.txt',".fa"))
+    if(name.endswith(".pep.all.fa")):
+        FastaScanner.findID("/Users/rieke/Documents/bio/peptide_files/" + name)
 
 query = ""
 

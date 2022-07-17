@@ -5,7 +5,7 @@ import FastaScanner
 descrip = {}
 
 #loads stable IDs
-FastaScanner.loadgeneIDs("/Users/rieke/OneDrive - stud.hs-emden-leer.de/bachelorarbeit/liststableid/oryzias_latipes.txt")
+FastaScanner.loadgeneIDs("/Users/rieke/OneDrive - stud.hs-emden-leer.de/bachelorarbeit/OG/lepisosteus_oculatus.txt")
 #connects to ensembl database
 connection = database.create_connection_ensembl()
 query_ensembl = ""
@@ -26,6 +26,6 @@ query = ""
 #loads desription into database where id is
 for x in descrip:
     cursor = connection_own.cursor()
-    query = "UPDATE oryzias_latipes SET descr = '" + str(descrip.get(x)) + "' WHERE id = '"+ str(x) +"' ;"
+    query = "UPDATE lepisosteus_oculatus SET descr = '" + str(descrip.get(x)) + "' WHERE id = '"+ str(x) +"' ;"
     database.execute_query(connection_own, query)
     connection_own.commit()
