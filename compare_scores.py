@@ -1,7 +1,4 @@
-import gc
-
 import pandas as pd
-import os
 
 file1 = pd.read_csv("/Users/rieke/Desktop/augustus_2/typ_tseb_clean.csv")
 

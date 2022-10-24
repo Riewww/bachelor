@@ -45,8 +45,8 @@ def makepoints(contured):
             conture.append(point)
         return conture
 
-files = os.listdir(r"C:\Users\rieke\Desktop\bloodsmears")
-path = "C:\\Users\\rieke\\Desktop\\bloodsmears\\"
+files = os.listdir(r"/Volumes/Transcend/ECHO Share/Ralf_Irmela-2")
+path = "/Volumes/Transcend/ECHO Share/Ralf_Irmela-2/"
 for file in files:
     disc.update({file:makepoints(image(path+file))})
     with open(file+'.json', 'w') as fp:

@@ -1,11 +1,16 @@
+
+# array to save lines of matches
 matches=[]
-info = ""
-hits ={}
+# saves gene ids
 key = ""
 
-file = open("/Users/rieke/Downloads/sequenceserver-std_tsv_report (5).tsv", 'r')
-file_new = open("/Users/rieke/Desktop/typhle_dedup.txt", 'w')
+# opens file with results of forward BLAST search
+file = open("/Users/rieke/Downloads/sequenceserver-std_tsv_report (18).tsv", 'r')
+# new file were gene ids of hits are stored
+file_new = open("/Users/rieke/Desktop/cod_inter.txt", 'w')
+#iterates over all lines of result file
 for line in file:
+    # if line starts with '#' (no hit)
     if (line.startswith('#')):
         if (len(matches) != 0):
             for x in matches:

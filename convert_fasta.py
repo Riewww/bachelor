@@ -1,6 +1,6 @@
 from Bio import SeqIO
 
-SeqIO.convert("/Users/rieke/Desktop/GenomeAssembly_Syngnathus_typhle_final_purged_primary.fasta.masked", "fasta","/Users/rieke/Desktop/typhle_masked.fa",  "fasta-2line")
+SeqIO.convert("/Users/rieke/Desktop/cod/cod.augustus.aa", "fasta","/Users/rieke/Desktop/cod_all_prots.fa",  "fasta-2line")
 
 #SeqIO.convert("/Users/rieke/Desktop/razor_masked.fa", "fasta", "/Users/rieke/Desktop/raz_mask.fa", "fasta-2line")
 
